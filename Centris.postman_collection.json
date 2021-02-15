@@ -1,0 +1,126 @@
+{
+	"info": {
+		"_postman_id": "1ae4fced-abf4-4cdb-93e4-b1095929c60a",
+		"name": "Centris",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Update",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);\r",
+							"postman.setEnvironmentVariable(\"searchURL\", jsonData.d.Result);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"query\": {\r\n    \"UseGeographyShapes\": 0,\r\n    \"Filters\": [\r\n      {\r\n        \"MatchType\": \"CityDistrict\",\r\n        \"Text\": \"Laval (Laval-des-Rapides)\",\r\n        \"Id\": 807\r\n      }\r\n    ],\r\n    \"FieldsValues\": [\r\n      {\r\n        \"fieldId\": \"CityDistrict\",\r\n        \"value\": 807,\r\n        \"fieldConditionId\": \"\",\r\n        \"valueConditionId\": \"\"\r\n      },\r\n      {\r\n        \"fieldId\": \"PropertyType\",\r\n        \"value\": \"SellCondo\",\r\n        \"fieldConditionId\": \"\",\r\n        \"valueConditionId\": \"IsResidentialForSale\"\r\n      },\r\n      {\r\n        \"fieldId\": \"Category\",\r\n        \"value\": \"Residential\",\r\n        \"fieldConditionId\": \"\",\r\n        \"valueConditionId\": \"\"\r\n      },\r\n      {\r\n        \"fieldId\": \"SellingType\",\r\n        \"value\": \"Sale\",\r\n        \"fieldConditionId\": \"\",\r\n        \"valueConditionId\": \"\"\r\n      },\r\n      {\r\n        \"fieldId\": \"SalePrice\",\r\n        \"value\": 0,\r\n        \"fieldConditionId\": \"ForSale\",\r\n        \"valueConditionId\": \"\"\r\n      },\r\n      {\r\n        \"fieldId\": \"SalePrice\",\r\n        \"value\": 225000,\r\n        \"fieldConditionId\": \"ForSale\",\r\n        \"valueConditionId\": \"\"\r\n      }\r\n    ]\r\n  },\r\n  \"isHomePage\": true\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{centrisURL}}/Property/UpdateQuery",
+					"host": [
+						"{{centrisURL}}"
+					],
+					"path": [
+						"Property",
+						"UpdateQuery"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetFullHtml",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{centrisURL}}/fr/condo~a-vendre~laval-laval-des-rapides?view=Thumbnail",
+					"host": [
+						"{{centrisURL}}"
+					],
+					"path": [
+						"fr",
+						"condo~a-vendre~laval-laval-des-rapides"
+					],
+					"query": [
+						{
+							"key": "view",
+							"value": "Thumbnail"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "HtmlBaseOnStartingPosition",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"startPosition\":0}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{centrisURL}}/Property/GetInscriptions",
+					"host": [
+						"{{centrisURL}}"
+					],
+					"path": [
+						"Property",
+						"GetInscriptions"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "FindLocation",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"text\":\"Laval-des\",\"language\":\"fr\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{centrisURL}}/Property/GetSearchAutoCompleteData",
+					"host": [
+						"{{centrisURL}}"
+					],
+					"path": [
+						"Property",
+						"GetSearchAutoCompleteData"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
