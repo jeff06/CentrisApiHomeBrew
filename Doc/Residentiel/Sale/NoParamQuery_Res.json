@@ -1,0 +1,40 @@
+{
+  "query": {
+    "UseGeographyShapes": 0,
+    "Filters": [
+    ],
+    "FieldsValues": [
+      {
+        "fieldId": "Category",
+        "value": "Residential",
+        "fieldConditionId": "",
+        "valueConditionId": ""
+      },
+      {
+        "fieldId": "SellingType",
+        "value": "Sale",
+        "fieldConditionId": "",
+        "valueConditionId": ""
+      },
+      {
+        "fieldId": "LandArea",
+        "value": "SquareFeet",
+        "fieldConditionId": "IsLandArea",
+        "valueConditionId": ""
+      },
+      {
+        "fieldId": "SalePrice",
+        "value": 0,
+        "fieldConditionId": "ForSale",
+        "valueConditionId": ""
+      },
+      {
+        "fieldId": "SalePrice",
+        "value": 999999999999,
+        "fieldConditionId": "ForSale",
+        "valueConditionId": ""
+      }
+    ]
+  },
+  "isHomePage": true
+}

@@ -1,0 +1,34 @@
+{
+  "query": {
+    "UseGeographyShapes": 0,
+    "Filters": [
+    ],
+    "FieldsValues": [
+      {
+        "fieldId": "Category",
+        "value": "Commercial",
+        "fieldConditionId": "",
+        "valueConditionId": ""
+      },
+      {
+        "fieldId": "SellingType",
+        "value": "Rent",
+        "fieldConditionId": "",
+        "valueConditionId": ""
+      },
+      {
+        "fieldId": "RentPrice",
+        "value": 0,
+        "fieldConditionId": "ForRent",
+        "valueConditionId": ""
+      },
+      {
+        "fieldId": "RentPrice",
+        "value": 999999999999,
+        "fieldConditionId": "ForRent",
+        "valueConditionId": ""
+      }
+    ]
+  },
+  "isHomePage": true
+}

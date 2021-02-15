@@ -1,0 +1,51 @@
+{
+  "query": {
+    "UseGeographyShapes": 0,
+    "Filters": [
+      {
+        "MatchType": "CityDistrict",
+        "Text": "Laval (Laval-des-Rapides)",
+        "Id": 807
+      }
+    ],
+    "FieldsValues": [
+      {
+        "fieldId": "CityDistrict",
+        "value": 807,
+        "fieldConditionId": "",
+        "valueConditionId": ""
+      },
+      {
+        "fieldId": "Category",
+        "value": "Residential",
+        "fieldConditionId": "",
+        "valueConditionId": ""
+      },
+      {
+        "fieldId": "SellingType",
+        "value": "Sale",
+        "fieldConditionId": "",
+        "valueConditionId": ""
+      },
+      {
+        "fieldId": "LandArea",
+        "value": "SquareFeet",
+        "fieldConditionId": "IsLandArea",
+        "valueConditionId": ""
+      },
+      {
+        "fieldId": "SalePrice",
+        "value": 0,
+        "fieldConditionId": "ForSale",
+        "valueConditionId": ""
+      },
+      {
+        "fieldId": "SalePrice",
+        "value": 999999999999,
+        "fieldConditionId": "ForSale",
+        "valueConditionId": ""
+      }
+    ]
+  },
+  "isHomePage": false
+}
