@@ -21,7 +21,8 @@ On the centris website
 4) and on line 1481 place a break point. We need to see the content of the "t" variable.
   i) if the centris code change and the line number is not valid, just search for "UseGeographyShapes" and get the returned value at the end
 5) copie de content of the variable
-6) The payload must be built this way -> 
+  i) When the code stop on the break point, in the console type JSON.stringify(t);
+7) The payload must be built this way -> 
 {
   "query": {
   *INSERT THE VARIABLE PAYLOAD*
