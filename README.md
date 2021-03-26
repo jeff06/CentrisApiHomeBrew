@@ -34,7 +34,7 @@ On the centris website
 
 ![image](https://user-images.githubusercontent.com/21128028/112655594-f083c100-8e26-11eb-9886-0ed87a1cce0c.png)
 
-##How to use the automatic email system?
+## How to use the automatic email system?
 This run on .net core 3.1 so, you will need visual studio 2019.
 Before building:
 - Go in the app.config file and fill the config.
