@@ -14,15 +14,15 @@ Please do not overload the centris website with multiple request. Use common sen
 ## How to generate the payload
 On the centris website
 
-0) There is an image at the end with the steps
-1) Input all of your search criteria *BUT DO NOT PRESS SEARCH*
-2) Press F12, go into the Sources tab and on the left expend -> top -> www.centris.ca -> js -> and click on property.js
-3) Pretty-print inside the browser
-4) and on line 1481 place a break point. We need to see the content of the "t" variable.
-  i) if the centris code change and the line number is not valid, just search for "UseGeographyShapes" and get the returned value at the end
-5) copie de content of the variable
-  i) When the code stop on the break point, in the console type JSON.stringify(t);
-7) The payload must be built this way -> 
+- There is an image at the end with the steps
+- Input all of your search criteria *BUT DO NOT PRESS SEARCH*
+- Press F12, go into the Sources tab and on the left expend -> top -> www.centris.ca -> js -> and click on property.js
+- Pretty-print inside the browser
+- On line 1481 place a break point. We need to see the content of the "t" variable.
+  - if the centris code change and the line number is not valid, just search for "UseGeographyShapes" and get the returned value at the end
+- Copie de content of the variable
+  - When the code stop on the break point, in the console type JSON.stringify(t);
+- The payload must be built this way -> 
 {
   "query": {
   *INSERT THE VARIABLE PAYLOAD*
@@ -30,6 +30,6 @@ On the centris website
   "isHomePage": true
 }
 
-7) You've made the payload. Gratz you can now poke the centris api and get the search resault. Have fun.
+- You've made the payload. Gratz you can now poke the centris api and get the search resault. Have fun.
 
-![image](https://user-images.githubusercontent.com/21128028/112643075-57e74400-8e1a-11eb-94fa-c1a1060f0574.png)
+![image](https://user-images.githubusercontent.com/21128028/112655594-f083c100-8e26-11eb-9886-0ed87a1cce0c.png)
