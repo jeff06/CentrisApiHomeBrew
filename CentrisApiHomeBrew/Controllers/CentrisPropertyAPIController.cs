@@ -34,5 +34,25 @@ namespace CentrisApiHomeBrew.Controllers
 
             return cpApiM.GetPropertyBaseOnJson();
         }
+
+        [HttpGet]
+        [Route("AutomaticEmail")]
+        public string AutomaticEmail(string email)
+        {
+            if (!string.IsNullOrEmpty(email))
+            {
+                CentrisPropertyApiManager cpApiM = new CentrisPropertyApiManager();
+                int nbOfEmailSent = cpApiM.AutomaticEmail(email);
+                if (nbOfEmailSent > 0)
+                {
+                    return $"{nbOfEmailSent} propertys were sent at {email}";
+                }
+                else
+                {
+                    return "No new property were posted";
+                }
+            }
+            return "The email is empty";
+        }
     }
 }

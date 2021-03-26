@@ -22,18 +22,6 @@
         "valueConditionId": "IsResidentialForSale"
       },
       {
-        "fieldId": "Pool",
-        "value": "Pool",
-        "fieldConditionId": "IsResidentialNotLot",
-        "valueConditionId": ""
-      },
-      {
-        "fieldId": "BuildingStyle",
-        "value": "MoreThanOneStorey",
-        "fieldConditionId": "IsBuildingStyle",
-        "valueConditionId": ""
-      },
-      {
         "fieldId": "Category",
         "value": "Residential",
         "fieldConditionId": "",
@@ -47,32 +35,8 @@
       },
       {
         "fieldId": "Rooms",
-        "value": "1+",
+        "value": "2+",
         "fieldConditionId": "IsResidentialNotLot",
-        "valueConditionId": ""
-      },
-      {
-        "fieldId": "BathPowderRooms",
-        "value": "1+",
-        "fieldConditionId": "IsResidentialNotLot",
-        "valueConditionId": ""
-      },
-      {
-        "fieldId": "Parkings",
-        "value": "1+",
-        "fieldConditionId": "IsResidentialNotLot",
-        "valueConditionId": ""
-      },
-      {
-        "fieldId": "Garages",
-        "value": "1+",
-        "fieldConditionId": "IsResidentialNotLot",
-        "valueConditionId": ""
-      },
-      {
-        "fieldId": "LastModifiedDate",
-        "value": "2020-09-28",
-        "fieldConditionId": "",
         "valueConditionId": ""
       },
       {
@@ -83,11 +47,11 @@
       },
       {
         "fieldId": "SalePrice",
-        "value": 999999999999,
+        "value": 2000000,
         "fieldConditionId": "ForSale",
         "valueConditionId": ""
       }
     ]
   },
-  "isHomePage": false
+  "isHomePage": true
 }
