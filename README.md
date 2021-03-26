@@ -25,7 +25,7 @@ On the centris website
 - The payload must be built this way -> 
 {
   "query": {
-  *INSERT THE VARIABLE PAYLOAD*
+  *INSERT THE VARIABLE CONTENT*
   },
   "isHomePage": true
 }
@@ -33,3 +33,22 @@ On the centris website
 - You've made the payload. Gratz you can now poke the centris api and get the search resault. Have fun.
 
 ![image](https://user-images.githubusercontent.com/21128028/112655594-f083c100-8e26-11eb-9886-0ed87a1cce0c.png)
+
+## How to use the automatic email system?
+This run on .net core 3.1 so, you will need visual studio 2019.
+Before building:
+- Go in the app.config file and fill the config.
+  - The email used will be the same as the NetworkCredential and the sending email
+  - The password is the one to log into your email account
+  - For the services you can choose the one you like. By default its outlook.
+Now its time to build :
+- Build the project.
+- Run the project.
+- One your browser open, go to the Scripts folder and edit "AutomaticEmail.ps1".
+- Make sure that the localhost port are correct.
+- If you want to change the time between calls, you can do so.
+  - I would not recommande going under 60 secondes.
+- Execute "AutomaticEmail.ps1" and let the thing run by it self.
+  - The first email that you will recive, containt all the result for your search. After that, it will only be the new one.
+- P.S The search is based on the current day and will change automatically.
+- P.S.S No need to added the time inside the Centris query, the code will do that by it self.
