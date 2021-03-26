@@ -12,9 +12,10 @@ Any help is welcome
 Please do not overload the centris website with multiple request. Use common sense.
 
 ## How to generate the payload
-On the centris website :
+On the centris website
+0) There is an image at the end with the step
 1) Input all of your search criteria *BUT DO NOT PRESS SEARCH*
-2) Press F12, go into the Sources tab and on the left expend top -> www.centris.ca -> js -> and click on property.js
+2) Press F12, go into the Sources tab and on the left expend -> top -> www.centris.ca -> js -> and click on property.js
 3) Pretty-print inside the browser
 4) and on line 1481 place a break point. We need to see the content of the "t" variable.
   i) if the centris code change and the line number is not valid, just search for "UseGeographyShapes" and get the returned value at the end
@@ -28,3 +29,5 @@ On the centris website :
 }
 
 7) You've made the payload. Gratz you can now poke the centris api and get the search resault. Have fun.
+
+![image](https://user-images.githubusercontent.com/21128028/112643075-57e74400-8e1a-11eb-94fa-c1a1060f0574.png)
