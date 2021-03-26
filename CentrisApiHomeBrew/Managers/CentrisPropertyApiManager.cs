@@ -54,20 +54,6 @@ namespace CentrisApiHomeBrew.Managers
             return lstProperty;
         }
 
-        public QueryAreaAndDistrict.QueryAreaAndDistrict GetAreaAndDistrict(string searchParam)
-        {
-            var client = new RestClient($"{BaseUrl}/Property/GetSearchAutoCompleteData");
-            string json = "{\"text\":\"TOREPLACE\",\"language\":\"fr\"}";
-            json = json.Replace("TOREPLACE", searchParam);
-            client.Timeout = -1;
-            var request = new RestRequest(Method.POST);
-            request.AddHeader("Content-Type", "application/json");
-            request.AddParameter("application/json", json, ParameterType.RequestBody);
-            IRestResponse response = client.Execute(request);
-            Console.WriteLine(response.Content);
-            return JsonConvert.DeserializeObject<QueryAreaAndDistrict.QueryAreaAndDistrict>(response.Content);
-        }
-
         private QueryResponseDataString.QueryResponseDataString Post()
         {
             string json = System.IO.File.ReadAllText(FileName);

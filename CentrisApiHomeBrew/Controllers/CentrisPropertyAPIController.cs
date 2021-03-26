@@ -34,15 +34,5 @@ namespace CentrisApiHomeBrew.Controllers
 
             return cpApiM.GetPropertyBaseOnJson();
         }
-
-        [EnableCors("_fetchAreaDistrictOrigins")]
-        [HttpPost]
-        [Route("AreaAndDistrict/{searchParam}")]
-        public QueryAreaAndDistrict.QueryAreaAndDistrict GetAreaAndDistrict(string searchParam)
-        {
-            CentrisPropertyApiManager cpApiM = new CentrisPropertyApiManager();
-
-            return cpApiM.GetAreaAndDistrict(searchParam);
-        }
     }
 }
