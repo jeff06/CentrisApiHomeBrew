@@ -13,6 +13,7 @@ Please do not overload the centris website with multiple request. Use common sen
 
 ## How to generate the payload
 On the centris website
+
 0) There is an image at the end with the step
 1) Input all of your search criteria *BUT DO NOT PRESS SEARCH*
 2) Press F12, go into the Sources tab and on the left expend -> top -> www.centris.ca -> js -> and click on property.js
