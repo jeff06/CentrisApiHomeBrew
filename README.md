@@ -25,7 +25,7 @@ On the centris website
 - The payload must be built this way -> 
 {
   "query": {
-  *INSERT THE VARIABLE PAYLOAD*
+  *INSERT THE VARIABLE CONTENT*
   },
   "isHomePage": true
 }
