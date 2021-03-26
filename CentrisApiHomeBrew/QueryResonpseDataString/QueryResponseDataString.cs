@@ -2,7 +2,7 @@
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace CentrisApiHomeBrew
+namespace CentrisApiHomeBrew.QueryResponseDataString
 {
     public class QueryResponseDataString
     {

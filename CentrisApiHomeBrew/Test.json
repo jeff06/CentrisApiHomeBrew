@@ -2,8 +2,25 @@
   "query": {
     "UseGeographyShapes": 0,
     "Filters": [
+      {
+        "MatchType": "GeographicArea",
+        "Text": "Laval",
+        "Id": "GSGS4622"
+      }
     ],
     "FieldsValues": [
+      {
+        "fieldId": "GeographicArea",
+        "value": "GSGS4622",
+        "fieldConditionId": "",
+        "valueConditionId": ""
+      },
+      {
+        "fieldId": "PropertyType",
+        "value": "SellCondo",
+        "fieldConditionId": "",
+        "valueConditionId": "IsResidentialForSale"
+      },
       {
         "fieldId": "Pool",
         "value": "Pool",
@@ -11,39 +28,9 @@
         "valueConditionId": ""
       },
       {
-        "fieldId": "Elevator",
-        "value": "Elevator",
-        "fieldConditionId": "IsElevator",
-        "valueConditionId": ""
-      },
-      {
-        "fieldId": "MobilityAdapted",
-        "value": "MobilityAdapted",
-        "fieldConditionId": "IsResidentialNotLot",
-        "valueConditionId": ""
-      },
-      {
-        "fieldId": "NearbyWater",
-        "value": "Waterfront",
-        "fieldConditionId": "IsResidential",
-        "valueConditionId": ""
-      },
-      {
-        "fieldId": "NearbyWater",
-        "value": "AccessWaterfront",
-        "fieldConditionId": "IsResidential",
-        "valueConditionId": ""
-      },
-      {
-        "fieldId": "NavigableWater",
-        "value": "NavigableWater",
-        "fieldConditionId": "IsResidential",
-        "valueConditionId": ""
-      },
-      {
-        "fieldId": "Resort",
-        "value": "Resort",
-        "fieldConditionId": "IsResort",
+        "fieldId": "BuildingStyle",
+        "value": "MoreThanOneStorey",
+        "fieldConditionId": "IsBuildingStyle",
         "valueConditionId": ""
       },
       {
@@ -60,7 +47,7 @@
       },
       {
         "fieldId": "Rooms",
-        "value": "1",
+        "value": "1+",
         "fieldConditionId": "IsResidentialNotLot",
         "valueConditionId": ""
       },
@@ -83,9 +70,9 @@
         "valueConditionId": ""
       },
       {
-        "fieldId": "LandArea",
-        "value": "SquareFeet",
-        "fieldConditionId": "IsLandArea",
+        "fieldId": "LastModifiedDate",
+        "value": "2020-09-28",
+        "fieldConditionId": "",
         "valueConditionId": ""
       },
       {

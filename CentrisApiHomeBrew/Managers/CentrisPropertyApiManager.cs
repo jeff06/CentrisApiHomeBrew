@@ -22,11 +22,11 @@ namespace CentrisApiHomeBrew.Managers
             //Must try max 2 time if our session is not valid
             for (int i = 0; i < 2; i++)
             {
-                QueryResponseDataString UpdatedQueryString = Post();
+                QueryResponseDataString.QueryResponseDataString UpdatedQueryString = Post();
                 if (UpdatedQueryString.d.Succeeded)
                 {
                     //Get(UpdatedQuery.d.Result);
-                    QueryResponseDataObject UpdatedQueryObject = GetNewPage(0);
+                    QueryResponseDataObject.QueryResponseDataObject UpdatedQueryObject = GetNewPage(0);
                     int pageIncrement = UpdatedQueryObject.d.Result.inscNumberPerPage;
                     int pageIndex = 0;
                     string pageHtml = UpdatedQueryObject.d.Result.html;
@@ -39,7 +39,7 @@ namespace CentrisApiHomeBrew.Managers
                         if (!(UpdatedQueryObject.d.PagerCounter.Current + 1 > UpdatedQueryObject.d.PagerCounter.Last))
                         {
                             pageIndex += pageIncrement;
-                            QueryResponseDataObject newPage = GetNewPage(pageIndex);
+                            QueryResponseDataObject.QueryResponseDataObject newPage = GetNewPage(pageIndex);
 
                             if (newPage.d.Succeeded)
                             {
@@ -54,7 +54,21 @@ namespace CentrisApiHomeBrew.Managers
             return lstProperty;
         }
 
-        private QueryResponseDataString Post()
+        public QueryAreaAndDistrict.QueryAreaAndDistrict GetAreaAndDistrict(string searchParam)
+        {
+            var client = new RestClient($"{BaseUrl}/Property/GetSearchAutoCompleteData");
+            string json = "{\"text\":\"TOREPLACE\",\"language\":\"fr\"}";
+            json = json.Replace("TOREPLACE", searchParam);
+            client.Timeout = -1;
+            var request = new RestRequest(Method.POST);
+            request.AddHeader("Content-Type", "application/json");
+            request.AddParameter("application/json", json, ParameterType.RequestBody);
+            IRestResponse response = client.Execute(request);
+            Console.WriteLine(response.Content);
+            return JsonConvert.DeserializeObject<QueryAreaAndDistrict.QueryAreaAndDistrict>(response.Content);
+        }
+
+        private QueryResponseDataString.QueryResponseDataString Post()
         {
             string json = System.IO.File.ReadAllText(FileName);
             var client = new RestClient($"{BaseUrl}/property/UpdateQuery");
@@ -69,7 +83,7 @@ namespace CentrisApiHomeBrew.Managers
             {
                 Cookies = client.CookieContainer.GetCookieHeader(new Uri("https://www.centris.ca/property/UpdateQuery"));
             }
-            return JsonConvert.DeserializeObject<QueryResponseDataString>(response.Content);
+            return JsonConvert.DeserializeObject<QueryResponseDataString.QueryResponseDataString>(response.Content);
         }
 
         private List<Property> FindAllPropertyInHTML(string html)
@@ -85,12 +99,12 @@ namespace CentrisApiHomeBrew.Managers
                 HtmlDocument docc = new HtmlDocument();
                 docc.LoadHtml(infoProperty);
 
-                property.Price = ValidateNode(doc, "//span[@itemprop='price']");
+                property.Price = ValidateNode(doc, "//meta[@itemprop='price']", true, "content");
                 property.MLS = ValidateNode(doc, "//p[@style='z-index: 0; height: 3px; color: white;']");
                 property.Image = ValidateNode(doc, "//img[@itemprop='image']", true, "src");
                 property.NbBedroom = ValidateNode(doc, "//div[@class='cac']");
                 property.NbBathroom = ValidateNode(doc, "//div[@class='sdb']");
-                property.Link = ValidateNode(doc, "//a[@class='a-more-detail']", true, "href");
+                property.Link = BaseUrl + ValidateNode(doc, "//a[@class='a-more-detail']", true, "href");
 
                 try
                 {
@@ -149,7 +163,7 @@ namespace CentrisApiHomeBrew.Managers
             }
         }
 
-        private QueryResponseDataObject GetNewPage(int pageIndex)
+        private QueryResponseDataObject.QueryResponseDataObject GetNewPage(int pageIndex)
         {
             string json = "{\"startPosition\": TOREPLACE}";
             json = json.Replace("TOREPLACE", pageIndex.ToString());
@@ -160,7 +174,7 @@ namespace CentrisApiHomeBrew.Managers
             request.AddHeader("Cookie", Cookies);
             request.AddParameter("application/json", json, ParameterType.RequestBody);
             IRestResponse response = client.Execute(request);
-            return JsonConvert.DeserializeObject<QueryResponseDataObject>(response.Content);
+            return JsonConvert.DeserializeObject<QueryResponseDataObject.QueryResponseDataObject>(response.Content);
         }
     }
 }

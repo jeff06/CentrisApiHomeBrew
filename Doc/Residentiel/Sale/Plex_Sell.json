@@ -1,1 +1,64 @@
-{"query":{"UseGeographyShapes":0,"Filters":[],"FieldsValues":[{"fieldId":"Plex","value":"2X","fieldConditionId":"IsPlex","valueConditionId":""},{"fieldId":"Plex","value":"3X","fieldConditionId":"IsPlex","valueConditionId":""},{"fieldId":"Plex","value":"4X","fieldConditionId":"IsPlex","valueConditionId":""},{"fieldId":"Plex","value":"5X","fieldConditionId":"IsPlex","valueConditionId":""},{"fieldId":"Category","value":"Residential","fieldConditionId":"","valueConditionId":""},{"fieldId":"SellingType","value":"Sale","fieldConditionId":"","valueConditionId":""},{"fieldId":"LandArea","value":"SquareFeet","fieldConditionId":"IsLandArea","valueConditionId":""},{"fieldId":"SalePrice","value":0,"fieldConditionId":"ForSale","valueConditionId":""},{"fieldId":"SalePrice","value":999999999999,"fieldConditionId":"ForSale","valueConditionId":""}]},"isHomePage":true}
+{
+  "query": {
+    "UseGeographyShapes": 0,
+    "Filters": [
+    ],
+    "FieldsValues": [
+      {
+        "fieldId": "Plex",
+        "value": "2X",
+        "fieldConditionId": "IsPlex",
+        "valueConditionId": ""
+      },
+      {
+        "fieldId": "Plex",
+        "value": "3X",
+        "fieldConditionId": "IsPlex",
+        "valueConditionId": ""
+      },
+      {
+        "fieldId": "Plex",
+        "value": "4X",
+        "fieldConditionId": "IsPlex",
+        "valueConditionId": ""
+      },
+      {
+        "fieldId": "Plex",
+        "value": "5X",
+        "fieldConditionId": "IsPlex",
+        "valueConditionId": ""
+      },
+      {
+        "fieldId": "Category",
+        "value": "Residential",
+        "fieldConditionId": "",
+        "valueConditionId": ""
+      },
+      {
+        "fieldId": "SellingType",
+        "value": "Sale",
+        "fieldConditionId": "",
+        "valueConditionId": ""
+      },
+      {
+        "fieldId": "LandArea",
+        "value": "SquareFeet",
+        "fieldConditionId": "IsLandArea",
+        "valueConditionId": ""
+      },
+      {
+        "fieldId": "SalePrice",
+        "value": 0,
+        "fieldConditionId": "ForSale",
+        "valueConditionId": ""
+      },
+      {
+        "fieldId": "SalePrice",
+        "value": 999999999999,
+        "fieldConditionId": "ForSale",
+        "valueConditionId": ""
+      }
+    ]
+  },
+  "isHomePage": true
+}

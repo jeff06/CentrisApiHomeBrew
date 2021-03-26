@@ -15,6 +15,7 @@ namespace CentrisApiHomeBrew
 {
     public class Startup
     {
+        readonly string MyAllowSpecificOrigins = "_fetchAreaDistrictOrigins";
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -25,6 +26,15 @@ namespace CentrisApiHomeBrew
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddCors(option =>
+            {
+                option.AddPolicy(name: MyAllowSpecificOrigins,
+                             builder => builder
+                                .AllowAnyOrigin()
+                                .AllowAnyMethod()
+                                .AllowAnyHeader());
+            });
+
             services.AddControllers();
         }
 
@@ -39,6 +49,8 @@ namespace CentrisApiHomeBrew
             app.UseHttpsRedirection();
 
             app.UseRouting();
+
+            app.UseCors(MyAllowSpecificOrigins);
 
             app.UseAuthorization();
 

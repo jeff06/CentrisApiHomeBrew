@@ -1,5 +1,6 @@
 ﻿using CentrisApiHomeBrew.Managers;
 using HtmlAgilityPack;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
@@ -26,11 +27,22 @@ namespace CentrisApiHomeBrew.Controllers
         }
 
         [HttpGet]
-        public List<Property> Get()
+        [Route("Listing")]
+        public List<Property> GetListing()
         {
             CentrisPropertyApiManager cpApiM = new CentrisPropertyApiManager();
 
             return cpApiM.GetPropertyBaseOnJson();
+        }
+
+        [EnableCors("_fetchAreaDistrictOrigins")]
+        [HttpPost]
+        [Route("AreaAndDistrict/{searchParam}")]
+        public QueryAreaAndDistrict.QueryAreaAndDistrict GetAreaAndDistrict(string searchParam)
+        {
+            CentrisPropertyApiManager cpApiM = new CentrisPropertyApiManager();
+
+            return cpApiM.GetAreaAndDistrict(searchParam);
         }
     }
 }
