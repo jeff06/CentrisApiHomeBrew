@@ -7,6 +7,7 @@ using Newtonsoft.Json;
 using RestSharp;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Net;
 using System.Text;
@@ -37,22 +38,18 @@ namespace CentrisApiHomeBrew.Controllers
 
         [HttpGet]
         [Route("AutomaticEmail")]
-        public string AutomaticEmail(string email)
+        public string AutomaticEmail()
         {
-            if (!string.IsNullOrEmpty(email))
+            CentrisPropertyApiManager cpApiM = new CentrisPropertyApiManager();
+            int nbOfEmailSent = cpApiM.AutomaticEmail();
+            if (nbOfEmailSent > 0)
             {
-                CentrisPropertyApiManager cpApiM = new CentrisPropertyApiManager();
-                int nbOfEmailSent = cpApiM.AutomaticEmail(email);
-                if (nbOfEmailSent > 0)
-                {
-                    return $"{nbOfEmailSent} propertys were sent at {email}";
-                }
-                else
-                {
-                    return "No new property were posted";
-                }
+                return $"{nbOfEmailSent} propertys were sent at {ConfigurationManager.AppSettings.Get("email")}";
             }
-            return "The email is empty";
+            else
+            {
+                return "No new property were posted";
+            }
         }
     }
 }

@@ -4,6 +4,7 @@ using Newtonsoft.Json;
 using RestSharp;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Net;
 using System.Net.Mail;
@@ -182,25 +183,26 @@ namespace CentrisApiHomeBrew.Managers
             return JsonConvert.DeserializeObject<QueryResponseDataObject.QueryResponseDataObject>(response.Content);
         }
 
-        public int AutomaticEmail(string email)
+        public int AutomaticEmail()
         {
             List<Property> propertys = GetPropertyBaseOnJson(true);
 
             if (propertys.Count > 0)
             {
                 propertys = propertys.OrderBy(x => x.Price).ToList();
-                SendEmail(email, propertys);
+                SendEmail(propertys);
             }
 
             return propertys.Count;
         }
 
-        private void SendEmail(string email, List<Property> propertys)
+        private void SendEmail(List<Property> propertys)
         {
-            var smtpClient = new SmtpClient("smtp.live.com")
+            string email = ConfigurationManager.AppSettings.Get("email");
+            var smtpClient = new SmtpClient(ConfigurationManager.AppSettings.Get("services"))
             {
                 Port = 587,
-                Credentials = new NetworkCredential(email, "password"),
+                Credentials = new NetworkCredential(email, ConfigurationManager.AppSettings.Get("password")),
                 EnableSsl = true,
             };
 
