@@ -2,7 +2,6 @@
 
 This C# api poke centris to retrive a listing of property base on a json body.
 The return is based on the html pages. It support multiple return pages.
-Ive put in the Doc file exemple to retrive information.
 
 I also made a Postman collection to help you.
 
