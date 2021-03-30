@@ -49,5 +49,4 @@ Now its time to build :
   - I would not recommande going under 60 secondes.
 - Execute "AutomaticEmail.ps1" and let the thing run by it self.
   - The first email that you will recive, containt all the result for your search. After that, it will only be the new one.
-- P.S The search is based on the current day and will change automatically.
-- P.S.S No need to added the time inside the Centris query, the code will do that by it self.
+- P.S The search is based on the current day and will change automatically. So make sure that in the initial query, it is there.
