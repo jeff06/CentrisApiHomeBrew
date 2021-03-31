@@ -2,7 +2,6 @@
 
 This C# api poke centris to retrive a listing of property base on a json body.
 The return is based on the html pages. It support multiple return pages.
-Ive put in the Doc file exemple to retrive information.
 
 I also made a Postman collection to help you.
 
@@ -50,5 +49,5 @@ Now its time to build :
   - I would not recommande going under 60 secondes.
 - Execute "AutomaticEmail.ps1" and let the thing run by it self.
   - The first email that you will recive, containt all the result for your search. After that, it will only be the new one.
-- P.S The search is based on the current day and will change automatically.
-- P.S.S No need to added the time inside the Centris query, the code will do that by it self.
+- P.S The search is based on the current day and will change automatically. So make sure that in the initial query, it is there.
+![image](https://user-images.githubusercontent.com/21128028/113071464-c7e72880-9192-11eb-8425-0612dac6f6b6.png)
