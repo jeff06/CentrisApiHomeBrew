@@ -50,3 +50,4 @@ Now its time to build :
 - Execute "AutomaticEmail.ps1" and let the thing run by it self.
   - The first email that you will recive, containt all the result for your search. After that, it will only be the new one.
 - P.S The search is based on the current day and will change automatically. So make sure that in the initial query, it is there.
+![image](https://user-images.githubusercontent.com/21128028/113071464-c7e72880-9192-11eb-8425-0612dac6f6b6.png)
