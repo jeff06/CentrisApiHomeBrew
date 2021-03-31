@@ -30,25 +30,28 @@ namespace CentrisApiHomeBrew.Managers
                 if (UpdatedQueryString.d.Succeeded)
                 {
                     QueryResponseDataObject.QueryResponseDataObject UpdatedQueryObject = GetNewPage(0);
-                    int pageIncrement = UpdatedQueryObject.d.Result.inscNumberPerPage;
-                    int pageIndex = 0;
                     string pageHtml = UpdatedQueryObject.d.Result.html;
-                    UpdatedQueryObject.d.InitPagerCounter();
-
-                    //Get all property on all pages
-                    for (UpdatedQueryObject.d.PagerCounter.Current = 1; UpdatedQueryObject.d.PagerCounter.Current <= UpdatedQueryObject.d.PagerCounter.Last; UpdatedQueryObject.d.PagerCounter.Current++)
+                    if (pageHtml != string.Empty)
                     {
-                        lstProperty.AddRange(FindAllPropertyInHTML(shouldAddTodayDate, pageHtml));
+                        int pageIncrement = UpdatedQueryObject.d.Result.inscNumberPerPage;
+                        int pageIndex = 0;
+                        UpdatedQueryObject.d.InitPagerCounter();
 
-                        //Prevent the final call because we already pass every property
-                        if (!(UpdatedQueryObject.d.PagerCounter.Current + 1 > UpdatedQueryObject.d.PagerCounter.Last))
+                        //Get all property on all pages
+                        for (UpdatedQueryObject.d.PagerCounter.Current = 1; UpdatedQueryObject.d.PagerCounter.Current <= UpdatedQueryObject.d.PagerCounter.Last; UpdatedQueryObject.d.PagerCounter.Current++)
                         {
-                            pageIndex += pageIncrement;
-                            QueryResponseDataObject.QueryResponseDataObject newPage = GetNewPage(pageIndex);
+                            lstProperty.AddRange(FindAllPropertyInHTML(shouldAddTodayDate, pageHtml));
 
-                            if (newPage.d.Succeeded)
+                            //Prevent the final call because we already pass every property
+                            if (!(UpdatedQueryObject.d.PagerCounter.Current + 1 > UpdatedQueryObject.d.PagerCounter.Last))
                             {
-                                pageHtml = newPage.d.Result.html;
+                                pageIndex += pageIncrement;
+                                QueryResponseDataObject.QueryResponseDataObject newPage = GetNewPage(pageIndex);
+
+                                if (newPage.d.Succeeded)
+                                {
+                                    pageHtml = newPage.d.Result.html;
+                                }
                             }
                         }
                     }
@@ -65,8 +68,10 @@ namespace CentrisApiHomeBrew.Managers
 
             if (shouldAddTodayDate)
             {
-                CheckIfShouldUpdateSavedDate();
-                json = AddTodayDate(json);
+                if (CheckIfShouldUpdateSavedDate())
+                {
+                    json = AddTodayDate(json);
+                }
             }
 
             var client = new RestClient($"{BaseUrl}/property/UpdateQuery");
@@ -238,28 +243,21 @@ namespace CentrisApiHomeBrew.Managers
         {
             CentrisSearchPayload centrisSearchPayload = JsonConvert.DeserializeObject<CentrisSearchPayload>(json);
 
-            FieldsValue lastModifiedDate = new FieldsValue
-            {
-                fieldId = "LastModifiedDate",
-                value = DateTime.Now.ToString("yyyy-MM-dd"),
-                fieldConditionId = "",
-                valueConditionId = "",
-            };
-
-            centrisSearchPayload.query.FieldsValues.Add(lastModifiedDate);
+            centrisSearchPayload.query.FieldsValues.Where(x => x.fieldId == "LastModifiedDate").FirstOrDefault().value = DateTime.Now.ToString("yyyy-MM-dd");
 
             return JsonConvert.SerializeObject(centrisSearchPayload);
         }
 
         //Check if we should clear the MSL list, to keep only the property that were released today
-        private void CheckIfShouldUpdateSavedDate()
+        private bool CheckIfShouldUpdateSavedDate()
         {
             if (Convert.ToDateTime(lastDate) < Convert.ToDateTime(DateTime.Now.ToString("yyyy-MM-dd")))
             {
                 lastDate = DateTime.Now.ToString("yyyy-MM-dd");
                 lstMSLAlreadySent = new List<string>();
+                return true;
             }
+            return false;
         }
-
     }
 }
