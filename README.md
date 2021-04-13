@@ -43,7 +43,7 @@ Before building:
 Now its time to build :
 - Build the project.
 - Run the project.
-- One your browser open, go to the Scripts folder and edit "AutomaticEmail.ps1".
+- Once your browser is open, go to the Scripts folder and edit "AutomaticEmail.ps1".
 - Make sure that the localhost port are correct.
 - If you want to change the time between calls, you can do so.
   - I would not recommande going under 60 secondes.
