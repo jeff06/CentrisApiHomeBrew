@@ -40,6 +40,12 @@
         "valueConditionId": ""
       },
       {
+        "fieldId": "LastModifiedDate",
+        "value": "2021-04-13",
+        "fieldConditionId": "",
+        "valueConditionId": ""
+      },
+      {
         "fieldId": "SalePrice",
         "value": 0,
         "fieldConditionId": "ForSale",
@@ -47,7 +53,7 @@
       },
       {
         "fieldId": "SalePrice",
-        "value": 2000000,
+        "value": 250000,
         "fieldConditionId": "ForSale",
         "valueConditionId": ""
       }

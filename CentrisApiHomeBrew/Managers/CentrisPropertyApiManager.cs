@@ -68,9 +68,10 @@ namespace CentrisApiHomeBrew.Managers
 
             if (shouldAddTodayDate)
             {
-                if (CheckIfShouldUpdateSavedDate())
+                if (CheckIfShouldUpdateSavedDate(json))
                 {
                     json = AddTodayDate(json);
+                    System.IO.File.WriteAllText(FileName, json);
                 }
             }
 
@@ -248,10 +249,17 @@ namespace CentrisApiHomeBrew.Managers
             return JsonConvert.SerializeObject(centrisSearchPayload);
         }
 
-        //Check if we should clear the MSL list, to keep only the property that were released today
-        private bool CheckIfShouldUpdateSavedDate()
+        private string GetDateTimeInFile(string json)
         {
-            if (Convert.ToDateTime(lastDate) < Convert.ToDateTime(DateTime.Now.ToString("yyyy-MM-dd")))
+            CentrisSearchPayload centrisSearchPayload = JsonConvert.DeserializeObject<CentrisSearchPayload>(json);
+
+            return Convert.ToDateTime(centrisSearchPayload.query.FieldsValues.Where(x => x.fieldId == "LastModifiedDate").FirstOrDefault().value).ToString("yyy-MM-dd");
+        }
+
+        //Check if we should clear the MSL list, to keep only the property that were released today
+        private bool CheckIfShouldUpdateSavedDate(string json)
+        {
+            if (Convert.ToDateTime(GetDateTimeInFile(json)) < Convert.ToDateTime(DateTime.Now.ToString("yyyy-MM-dd")))
             {
                 lastDate = DateTime.Now.ToString("yyyy-MM-dd");
                 lstMSLAlreadySent = new List<string>();
