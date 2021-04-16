@@ -28,7 +28,8 @@ On the centris website
   },
   "isHomePage": true
 }
-
+- Replace the \ (backslash) with space
+- Format the json file to be valide
 - You've made the payload. Gratz you can now poke the centris api and get the search resault. Have fun.
 
 ![image](https://user-images.githubusercontent.com/21128028/112655594-f083c100-8e26-11eb-9886-0ed87a1cce0c.png)
